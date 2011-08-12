@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<title>Get Params</title>
+	<link href="/IceFacesStuff/stylesheet.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
+<h:body>
+
+	<h:panelGroup id="container">
+
+		<h:panelGroup id="header" layout="block">Get Params</h:panelGroup>
+
+		<h:panelGroup id="main_area" layout="block">
+
+			<h:panelGroup layout="block" styleClass="para">This page shows a few things.
+			 First, that it isn't that difficult to obtain GET parameters and inject them in to the bean.  If you look at GetParamsBean's readParams() 
+			 method, you'll see that it's getting the parameter map and setting values if they came in.  The second thing is that it is showing information from a second bean.  This isn't good design, though, so I'm not quite sure why I've done that other than to prove it's possible.
+			 The other thing of note is that the bean is ViewScoped, which prevents the "param" from being reset when you click the "Update text to 2nd value" link.  If you took that out of the bean, it (param) would be reset.
+			 Other than that, it's all fairly simple stuff for a JSF page.</h:panelGroup>
+
+			<h:panelGroup layout="block" styleClass="para">#{getParamsBean.text}</h:panelGroup>
+			<h:panelGroup layout="block" styleClass="para">#{getParamsBean.param}</h:panelGroup>
+			<h:panelGroup layout="block" styleClass="para">#{anotherBean.hello}</h:panelGroup>
+			<h:panelGroup>
+				<h:form>
+					<h:commandLink action="#{getParamsBean.setSecondTextValue}">
+						<h:outputText value="Update text to 2nd value"></h:outputText>
+					</h:commandLink>
+				</h:form>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<h:panelGroup id="footer" layout="block">
+			<em>Kenny Scott</em>
+		</h:panelGroup>
+
+	</h:panelGroup>
+
+</h:body>
+</html>
